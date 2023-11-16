@@ -26,10 +26,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class App {
-	static String GUID_SERVER_URL = "your guid_server url";
-	static String GUID_SERVER_USERNAME = "your guid_server username";
-	static String GUID_SERVER_PASSWORD = "your guid_server password";
-	static String GUID_SERVER_PREFIX = "your guid_server prefix";
+	static String GUID_SERVER_URL = "https://120.126.47.138:8443";
+	static String GUID_SERVER_USERNAME = "nycutest001";
+	static String GUID_SERVER_PASSWORD = "Ksx6O%$i";
+	static String GUID_SERVER_PREFIX = "NYCU01";
 	
 	static int First_Name_index = 6;
 	static int Last_Name_index = 7;
@@ -37,7 +37,7 @@ public class App {
 	static int Birthday_index = 2;
 	static int Identifier_index = 1;
 
-	static int[] needToEnCoder = new int[] { First_Name_index, Last_Name_index, Gender_index, Birthday_index,
+	static int[] needToEnCoder = new int[] { First_Name_index, Last_Name_index, Birthday_index,
 			Identifier_index };
 
 	static String csvFile = "test_patient.csv"; // 從命令行參數中獲取CSV文件的路徑和文件名稱
@@ -53,9 +53,10 @@ public class App {
 			
 			ArrayList<List<String>> csvData = readCSV(br);
 			ArrayList<List<String>> mappingData = mapping(csvData);
+			witeCSV(mappingData, bwM);
+
 			ArrayList<List<String>> enCoderData = enCoder(mappingData);
 
-			witeCSV(mappingData, bwM);
 			witeCSV(enCoderData, bwE);
 
 		} catch (IOException e) {
